@@ -14,7 +14,7 @@
 
 That's what a lot of people are saying: soon AI writes all the code, and programmers aren't needed anymore.
 
-We don't buy it. AI is a new tool that makes writing code easier, like the tools before it. Compilers saved us from
+We see AI as another step in how programming tools evolve. Compilers saved us from
 writing machine code by hand. High-level languages let us write for people instead of processors. Now AI takes care of
 much of the syntax. Every time, engineers didn't disappear. They moved up a level and built bigger systems.
 
@@ -111,14 +111,15 @@ Behave knows it is ready. Each part says where it runs: this computer, a Docker 
 
 ![Setup: the parts this project runs, the broker in a Docker container, and the ready signal of each](docs/images/readme/12-setup.png)
 
-Tick the parts and Behave writes an ordinary `run.sh` you can read and keep:
+Tick the parts and Behave writes an ordinary `run.sh` you can read and keep. **Run system** builds first, starts each
+part in order and waits until each one is ready.
 
-![Review before saving: what run.sh starts, in which order, and the script itself](docs/images/readme/13-run-sh.png)
+While the system runs, the dashboard, dispatcher, order feed and simulator each have their own **interactive terminal**.
+Switch between their tabs to see output and type directly into that component's process. Ctrl+C interrupts the selected
+component; **Open in Terminal** opens the same session in the Terminal tool window. Logs stay available separately.
+**Stop system** stops only what the run started, Docker containers included.
 
-**Run system** builds first, starts each part in order and waits until each one is ready. **Stop** stops only what it
-started, Docker containers included.
-
-![Run system: firmware built, every part ready, live output from the broker, twin and dispatcher](docs/images/readme/11-run.png)
+![The running warehouse system with separate interactive terminal tabs for the dashboard, dispatcher, order feed and simulator](docs/images/readme/14-component-terminals.png)
 
 And the warehouse, running the code from above. Robot 3 is low (red) and heads to a charger instead of taking orders:
 
